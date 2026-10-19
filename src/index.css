@@ -1,0 +1,812 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Cairo', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'Plus Jakarta Sans', ui-monospace, monospace;
+  --color-brand-navy: #0B1953;
+  --color-brand-orange: #FA541C;
+}
+
+@layer base {
+  html { 
+    color-scheme: dark; 
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background:
+      radial-gradient(1200px 600px at 100% -10%, rgba(11, 25, 83, 0.65), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(250, 84, 28, 0.08), transparent 60%),
+      #060B19;
+    background-attachment: fixed;
+    color: #F1F5F9;
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection { background: rgba(250, 84, 28, 0.4); color: #ffffff; }
+
+  ::-webkit-scrollbar { width: 7px; height: 7px; }
+  ::-webkit-scrollbar-track { background: rgba(6, 11, 25, 0.8); }
+  ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.25); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(250, 84, 28, 0.6); }
+
+  select option { background: #0A1228; color: #FFFFFF; font-weight: 500; }
+  input[type='number']::-webkit-inner-spin-button { opacity: 0.4; }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes toast {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-pop { animation: pop 0.18s cubic-bezier(0.16, 1, 0.3, 1); }
+.animate-toast { animation: toast 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+.animate-page { animation: fade-up 0.25s ease-out; }
+
+/* ==========================================================================
+   ENTERPRISE LIGHT THEME SYSTEM (Ultra-Crisp, High-Contrast & Powerful)
+   ========================================================================== */
+
+html.light {
+  color-scheme: light !important;
+}
+
+html.light body,
+html.light .app-container {
+  background-color: #F8FAFC !important;
+  background-image: 
+    radial-gradient(1200px 600px at 100% -10%, rgba(224, 231, 255, 0.45), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(254, 237, 213, 0.35), transparent 60%) !important;
+  background-attachment: fixed !important;
+  color: #0F172A !important;
+}
+
+/* Headings */
+html.light h1, 
+html.light h2, 
+html.light h3, 
+html.light h4, 
+html.light h5, 
+html.light h6 {
+  color: #0F172A !important;
+  letter-spacing: -0.02em;
+}
+
+/* Base Text Contrast Overrides */
+html.light .text-white {
+  color: #0F172A !important;
+}
+html.light .text-slate-100 {
+  color: #1E293B !important;
+}
+html.light .text-slate-200 {
+  color: #334155 !important;
+}
+html.light .text-slate-300 {
+  color: #475569 !important;
+}
+html.light .text-slate-400 {
+  color: #64748B !important;
+}
+html.light .text-slate-500 {
+  color: #64748B !important;
+}
+html.light .brand-logo-text,
+html.light .text-orange-500 {
+  color: #FA541C !important;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons (Targeted Specifically with Zero Leakage)
+   -------------------------------------------------------------------------- */
+html.light .btn-primary,
+html.light button.btn-primary,
+html.light button[class*="from-[#FA541C]"] {
+  background: linear-gradient(to left, #FA541C, #FF8A00) !important;
+  color: #FFFFFF !important;
+}
+html.light .btn-primary *,
+html.light button.btn-primary *,
+html.light button[class*="from-[#FA541C]"] * {
+  color: #FFFFFF !important;
+}
+
+html.light .btn-secondary {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #0F172A !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+html.light .btn-secondary:hover {
+  background-color: #F8FAFC !important;
+  border-color: #94A3B8 !important;
+  color: #0F172A !important;
+}
+
+html.light .btn-success,
+html.light button.btn-success {
+  background-color: #059669 !important;
+  color: #FFFFFF !important;
+}
+html.light .btn-success *,
+html.light button.btn-success * {
+  color: #FFFFFF !important;
+}
+
+/* Active Orange Filter Buttons & Tab Pills */
+html.light button.time-range-btn-active,
+html.light button.time-range-btn-active *,
+html.light div.inline-flex.rounded-2xl.border button[class*="from-orange-500"],
+html.light div.inline-flex.rounded-2xl.border button[class*="from-orange-500"] *,
+html.light div.inline-flex button[class*="bg-orange-500"]:not(.sidebar-nav-btn),
+html.light div.inline-flex button[class*="bg-orange-500"]:not(.sidebar-nav-btn) * {
+  color: #FFFFFF !important;
+}
+html.light button.time-range-btn-active {
+  background-color: #FA541C !important;
+  box-shadow: 0 2px 6px rgba(250, 84, 28, 0.3) !important;
+}
+html.light button.time-range-btn-inactive {
+  color: #64748B !important;
+  background-color: transparent !important;
+}
+html.light button.time-range-btn-inactive:hover {
+  color: #0F172A !important;
+  background-color: #E2E8F0 !important;
+}
+html.light .dashboard-time-pills {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Executive Command Banners (Admin & Merchant Dashboards)
+   -------------------------------------------------------------------------- */
+html.light .executive-header-banner,
+html.light [class*="from-[#0B1953]"][class*="via-[#0E1E5E]"],
+html.light [class*="from-orange-950/60"][class*="via-[#0B1953]"] {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 55%, #F0F4FF 100%) !important;
+  border: 1.5px solid #FED7AA !important;
+  box-shadow: 0 10px 25px -5px rgba(250, 84, 28, 0.08), 0 8px 10px -6px rgba(11, 25, 83, 0.04) !important;
+}
+html.light .executive-header-banner h1,
+html.light [class*="from-[#0B1953]"][class*="via-[#0E1E5E]"] h1,
+html.light [class*="from-orange-950/60"][class*="via-[#0B1953]"] h1 {
+  color: #0F172A !important;
+  font-weight: 900 !important;
+}
+html.light .executive-header-banner p,
+html.light [class*="from-[#0B1953]"][class*="via-[#0E1E5E]"] p,
+html.light [class*="from-orange-950/60"][class*="via-[#0B1953]"] p {
+  color: #475569 !important;
+}
+html.light .executive-header-banner span[class*="bg-orange-500/10"] {
+  background-color: #FFF7ED !important;
+  border: 1px solid #FDBA74 !important;
+  color: #C2410C !important;
+}
+html.light .executive-header-banner span[class*="bg-emerald-500/10"] {
+  background-color: #ECFDF5 !important;
+  border: 1px solid #6EE7B7 !important;
+  color: #047857 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Operational Alert Ribbons (Admin Dashboard)
+   -------------------------------------------------------------------------- */
+html.light .operational-alert-amber {
+  background-color: #FFFBEB !important;
+  border: 1.5px solid #FDE68A !important;
+}
+html.light .operational-alert-amber .alert-title {
+  color: #92400E !important;
+  font-weight: 800 !important;
+}
+html.light .operational-alert-amber .alert-desc {
+  color: #B45309 !important;
+  font-weight: 600 !important;
+}
+html.light .operational-alert-amber svg {
+  color: #D97706 !important;
+}
+
+html.light .operational-alert-red {
+  background-color: #FEF2F2 !important;
+  border: 1.5px solid #FECACA !important;
+}
+html.light .operational-alert-red .alert-title {
+  color: #991B1B !important;
+  font-weight: 800 !important;
+}
+html.light .operational-alert-red .alert-desc {
+  color: #B91C1C !important;
+  font-weight: 600 !important;
+}
+html.light .operational-alert-red svg {
+  color: #DC2626 !important;
+}
+
+html.light .operational-alert-sky {
+  background-color: #F0F9FF !important;
+  border: 1.5px solid #BAE6FD !important;
+}
+html.light .operational-alert-sky .alert-title {
+  color: #075985 !important;
+  font-weight: 800 !important;
+}
+html.light .operational-alert-sky .alert-desc {
+  color: #0284C7 !important;
+  font-weight: 600 !important;
+}
+html.light .operational-alert-sky svg {
+  color: #0284C7 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Header & Navbar
+   -------------------------------------------------------------------------- */
+html.light header {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.03) !important;
+}
+html.light header .text-slate-200,
+html.light header .text-slate-300 {
+  color: #1E293B !important;
+}
+html.light header nav {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+}
+html.light header nav button {
+  color: #475569 !important;
+}
+html.light header nav button:hover {
+  color: #0F172A !important;
+}
+html.light header nav button[class*="bg-[#0B1953]"] {
+  background-color: #0B1953 !important;
+  color: #FFFFFF !important;
+}
+html.light header nav button[class*="bg-[#0B1953]"] * {
+  color: #FFFFFF !important;
+}
+html.light header button.rounded-lg.bg-white\/\[0\.03\],
+html.light header button.rounded-lg[class*="bg-white"] {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #1E293B !important;
+}
+html.light header button.rounded-lg.bg-white\/\[0\.03\] *,
+html.light header button.rounded-lg[class*="bg-white"] * {
+  color: #1E293B !important;
+}
+html.light header .rounded-full[class*="from-[#0B1953]"][class*="to-[#FA541C]"] {
+  color: #FFFFFF !important;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar Navigation (Clean & High Contrast)
+   -------------------------------------------------------------------------- */
+html.light aside {
+  background-color: #FFFFFF !important;
+  border-left: 1px solid #E2E8F0 !important;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.02) !important;
+}
+html.light aside div.text-slate-500 {
+  color: #64748B !important;
+  font-weight: 700 !important;
+}
+html.light aside nav button.sidebar-nav-btn {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #475569 !important;
+}
+html.light aside nav button.sidebar-nav-btn:hover {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+html.light aside nav button.sidebar-nav-btn:hover svg {
+  color: #FA541C !important;
+}
+html.light aside nav button.sidebar-nav-btn-active {
+  background: linear-gradient(to left, rgba(250, 84, 28, 0.12), transparent) !important;
+  color: #FA541C !important;
+  font-weight: 800 !important;
+}
+html.light aside nav button.sidebar-nav-btn-active * {
+  color: #FA541C !important;
+}
+html.light aside nav button.sidebar-nav-btn-inactive * {
+  color: inherit !important;
+}
+html.light aside nav button.sidebar-nav-btn span.rounded-md {
+  background-color: #F1F5F9 !important;
+  color: #C2410C !important;
+  border: 1px solid #FED7AA !important;
+}
+html.light aside .from-\[\#0B1953\]\/70 {
+  background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%) !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+html.light aside .from-\[\#0B1953\]\/70 .text-slate-300 {
+  color: #0F172A !important;
+}
+html.light aside .from-\[\#0B1953\]\/70 .text-slate-500 {
+  color: #64748B !important;
+}
+
+/* --------------------------------------------------------------------------
+   Universal Card Surfaces & StatCards
+   -------------------------------------------------------------------------- */
+html.light .rounded-2xl.border,
+html.light [class*="bg-[#0A1228]"],
+html.light [class*="bg-[#0A1229]"],
+html.light [class*="bg-[#070D1F]"],
+html.light [class*="bg-[#060B19]"]:not(img),
+html.light [class*="bg-[#050B18]"],
+html.light [class*="bg-[#050914]"],
+html.light [class*="bg-[#0B1430]"] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light [class*="bg-slate-950"],
+html.light [class*="bg-slate-900"]:not(pre):not(code) {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* StatCards */
+html.light .stat-card {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+html.light .stat-card-label {
+  color: #64748B !important;
+  font-weight: 700 !important;
+}
+html.light .stat-card-value {
+  color: #0F172A !important;
+  font-weight: 900 !important;
+}
+html.light .stat-card-hint {
+  color: #64748B !important;
+}
+
+/* Card Borders & Dividers */
+html.light [class*="border-b"][class*="border-white"],
+html.light [class*="border-t"][class*="border-white"],
+html.light [class*="border-l"][class*="border-white"],
+html.light [class*="border-r"][class*="border-white"],
+html.light [class*="border-white\/"] {
+  border-color: #E2E8F0 !important;
+}
+html.light [class*="divide-white"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #F1F5F9 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Driver Cards (Screenshot 3)
+   -------------------------------------------------------------------------- */
+html.light .driver-vehicle-box,
+html.light .driver-metric-box {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+}
+html.light .driver-vehicle-box .text-slate-400,
+html.light .driver-metric-box .text-slate-400 {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+html.light .driver-vehicle-box .text-slate-300,
+html.light .driver-metric-box .text-slate-300 {
+  color: #334155 !important;
+}
+html.light span[class*="bg-slate-800"],
+html.light [class*="bg-slate-800"]:not(button):not(pre):not(code) {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #1E293B !important;
+}
+
+/* --------------------------------------------------------------------------
+   Merchant Cards (Screenshot 4)
+   -------------------------------------------------------------------------- */
+html.light .merchant-balance-box {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+}
+html.light .merchant-balance-box span {
+  color: #475569 !important;
+  font-weight: 700 !important;
+}
+html.light .merchant-api-key-box {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #334155 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Roles & Permissions Matrix (Screenshot 5)
+   -------------------------------------------------------------------------- */
+html.light [class*="bg-slate-950/80"][class*="border-b"] {
+  background-color: #F1F5F9 !important;
+  border-bottom: 1.5px solid #E2E8F0 !important;
+}
+html.light [class*="bg-slate-950/80"][class*="border-b"] h3 {
+  color: #0F172A !important;
+  font-weight: 800 !important;
+}
+html.light [class*="bg-slate-950/80"][class*="border-b"] p {
+  color: #475569 !important;
+}
+
+html.light .permission-checkbox-card {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+}
+html.light .permission-checkbox-card:hover {
+  background-color: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+}
+html.light .permission-checkbox-card-checked {
+  background-color: #FFF7ED !important;
+  border: 1.5px solid #FDBA74 !important;
+  box-shadow: 0 1px 3px rgba(250, 84, 28, 0.08) !important;
+}
+html.light .permission-checkbox-card .text-white {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+html.light .permission-checkbox-card [class*="text-orange-400"] {
+  color: #C2410C !important;
+  font-weight: 700 !important;
+}
+html.light .permission-checkbox-card input[type="checkbox"] {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #94A3B8 !important;
+}
+html.light .permission-checkbox-card input[type="checkbox"]:checked {
+  background-color: #FA541C !important;
+  border-color: #FA541C !important;
+}
+
+/* --------------------------------------------------------------------------
+   Orders Status Tabs & Filter Pills
+   -------------------------------------------------------------------------- */
+html.light .tabs-container,
+html.light div.inline-flex.rounded-2xl.border,
+html.light div.bg-\[\#0A1228\]\/90 {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+}
+html.light .tab-button-inactive,
+html.light div.inline-flex.rounded-2xl.border button:not([class*="from-orange-500"]) {
+  color: #334155 !important;
+}
+html.light .tab-button-inactive:hover,
+html.light div.inline-flex.rounded-2xl.border button:not([class*="from-orange-500"]):hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+html.light .tab-button-inactive .tab-count,
+html.light div.inline-flex.rounded-2xl.border button:not([class*="from-orange-500"]) span.font-mono {
+  background-color: #CBD5E1 !important;
+  color: #1E293B !important;
+  font-weight: 700 !important;
+}
+
+/* Floating bulk bar in Orders */
+html.light div[class*="from-[#0B1953]"][class*="to-[#122268]"] {
+  background: linear-gradient(135deg, #0B1953 0%, #152A7D 100%) !important;
+  border-color: #FA541C !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25) !important;
+  color: #FFFFFF !important;
+}
+html.light div[class*="from-[#0B1953]"][class*="to-[#122268]"] * {
+  color: #FFFFFF !important;
+}
+html.light div[class*="from-[#0B1953]"][class*="to-[#122268]"] button[class*="bg-white"] {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+/* --------------------------------------------------------------------------
+   Toast Notifications System
+   -------------------------------------------------------------------------- */
+html.light .animate-toast {
+  background-color: #FFFFFF !important;
+  border-width: 1.5px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06) !important;
+  color: #0F172A !important;
+}
+html.light .animate-toast span {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+html.light .animate-toast.border-emerald-500\/30,
+html.light .animate-toast.toast-success {
+  border-color: #86EFAC !important;
+  background-color: #F0FDF4 !important;
+}
+html.light .animate-toast.border-emerald-500\/30 svg,
+html.light .animate-toast.toast-success svg {
+  color: #059669 !important;
+}
+html.light .animate-toast.border-red-500\/30,
+html.light .animate-toast.toast-error {
+  border-color: #FCA5A5 !important;
+  background-color: #FEF2F2 !important;
+}
+html.light .animate-toast.border-red-500\/30 svg,
+html.light .animate-toast.toast-error svg {
+  color: #DC2626 !important;
+}
+html.light .animate-toast.border-sky-500\/30,
+html.light .animate-toast.toast-info {
+  border-color: #7DD3FC !important;
+  background-color: #F0F9FF !important;
+}
+html.light .animate-toast.border-sky-500\/30 svg,
+html.light .animate-toast.toast-info svg {
+  color: #0284C7 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Tables in Light Mode & Table Action Buttons
+   -------------------------------------------------------------------------- */
+html.light table {
+  background-color: #FFFFFF !important;
+}
+html.light table thead tr {
+  background-color: #F8FAFC !important;
+  border-bottom: 2px solid #CBD5E1 !important;
+}
+html.light table thead th {
+  color: #1E293B !important;
+  font-weight: 800 !important;
+  font-size: 11px !important;
+}
+html.light table tbody tr {
+  border-bottom: 1px solid #F1F5F9 !important;
+}
+html.light table tbody tr:hover {
+  background-color: #F8FAFC !important;
+}
+html.light td {
+  color: #0F172A !important;
+}
+html.light td div.text-slate-400,
+html.light td span.text-slate-400 {
+  color: #64748B !important;
+}
+
+html.light table tbody button[class*="bg-slate-800"],
+html.light table tbody button[class*="bg-slate-800/80"] {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #334155 !important;
+}
+html.light table tbody button[class*="bg-slate-800"]:hover,
+html.light table tbody button[class*="bg-slate-800/80"]:hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* --------------------------------------------------------------------------
+   Inputs, Selects, and Textareas
+   -------------------------------------------------------------------------- */
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1.5px solid #CBD5E1 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04) !important;
+}
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  border-color: #FA541C !important;
+  box-shadow: 0 0 0 3px rgba(250, 84, 28, 0.15) !important;
+  outline: none !important;
+}
+html.light select option {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+/* --------------------------------------------------------------------------
+   Tabs Generic Component
+   -------------------------------------------------------------------------- */
+html.light div.inline-flex.bg-white\/\[0\.03\] {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+}
+html.light div.inline-flex.bg-white\/\[0\.03\] button.text-slate-400 {
+  color: #475569 !important;
+}
+html.light div.inline-flex.bg-white\/\[0\.03\] button.text-slate-400:hover {
+  color: #0F172A !important;
+  background-color: #E2E8F0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Status Badges - High-Contrast Formulation
+   -------------------------------------------------------------------------- */
+html.light [class*="text-emerald-300"],
+html.light [class*="text-emerald-400"] {
+  color: #047857 !important;
+}
+html.light [class*="bg-emerald-500/10"],
+html.light [class*="bg-emerald-500/15"] {
+  background-color: #ECFDF5 !important;
+}
+html.light [class*="ring-emerald-500/25"],
+html.light [class*="ring-emerald-500/20"] {
+  --tw-ring-color: #A7F3D0 !important;
+}
+
+html.light [class*="text-orange-300"],
+html.light [class*="text-orange-400"] {
+  color: #C2410C !important;
+}
+html.light [class*="bg-orange-500/10"],
+html.light [class*="bg-orange-500/15"] {
+  background-color: #FFF7ED !important;
+}
+html.light [class*="ring-orange-500/30"],
+html.light [class*="ring-orange-500/20"] {
+  --tw-ring-color: #FED7AA !important;
+}
+
+html.light [class*="text-red-300"],
+html.light [class*="text-red-400"] {
+  color: #B91C1C !important;
+}
+html.light [class*="bg-red-500/10"],
+html.light [class*="bg-red-500/15"] {
+  background-color: #FEF2F2 !important;
+}
+html.light [class*="ring-red-500/25"],
+html.light [class*="ring-red-500/30"] {
+  --tw-ring-color: #FECACA !important;
+}
+
+html.light [class*="text-amber-300"],
+html.light [class*="text-amber-400"] {
+  color: #B45309 !important;
+}
+html.light [class*="bg-amber-500/10"],
+html.light [class*="bg-amber-500/15"] {
+  background-color: #FFFBEB !important;
+}
+html.light [class*="ring-amber-500/25"] {
+  --tw-ring-color: #FDE68A !important;
+}
+
+html.light [class*="text-sky-300"],
+html.light [class*="text-cyan-400"],
+html.light [class*="text-blue-400"] {
+  color: #0369A1 !important;
+}
+html.light [class*="bg-sky-500/10"],
+html.light [class*="bg-blue-500/10"] {
+  background-color: #F0F9FF !important;
+}
+html.light [class*="ring-sky-500/25"],
+html.light [class*="ring-blue-500/20"] {
+  --tw-ring-color: #BAE6FD !important;
+}
+
+/* --------------------------------------------------------------------------
+   Modals & Dialogs
+   -------------------------------------------------------------------------- */
+html.light [role="dialog"] {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.22) !important;
+  color: #0F172A !important;
+}
+html.light [role="dialog"] > div:first-child {
+  background-color: #F8FAFC !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+html.light [role="dialog"] > div:last-child {
+  border-top-color: #E2E8F0 !important;
+}
+html.light [role="dialog"] label span {
+  color: #334155 !important;
+  font-weight: 700 !important;
+}
+html.light .fixed.inset-0[class*="bg-[#02050d]"] {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+}
+
+/* Global Quick Search (Ctrl+K) */
+html.light .global-search-modal,
+html.light [role="dialog"] input {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+/* Pre / Code Blocks - High-End Dark Terminal in Light Mode */
+html.light pre,
+html.light code[class*="font-mono"]:not(span) {
+  background-color: #0F172A !important;
+  color: #E2E8F0 !important;
+  border-color: #334155 !important;
+}
+
+/* Scrollbars & Selection */
+html.light ::selection {
+  background: rgba(250, 84, 28, 0.25);
+  color: #FA541C;
+}
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #FA541C;
+}
+
+/* Printable Invoices in Light Mode */
+html.light #printable-invoice,
+html.light #printable-merchant-invoice {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+}
+html.light #printable-invoice table thead,
+html.light #printable-merchant-invoice table thead {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+html.light #printable-invoice table tbody td,
+html.light #printable-merchant-invoice table tbody td {
+  color: #0F172A !important;
+}
+
+/* ---------- Print: only #print-area is rendered on paper ---------- */
+.print-only { display: none; }
+
+@media print {
+  @page { margin: 8mm; }
+  html, body { background: #fff !important; }
+  body * { visibility: hidden !important; }
+  .print-only { display: block !important; }
+  #print-area, #print-area * { visibility: visible !important; }
+  #print-area { position: absolute; inset: 0; }
+  .print-break { break-after: page; }
+}

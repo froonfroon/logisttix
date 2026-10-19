@@ -1,0 +1,18 @@
+/* LogistteX Custom Styles */
+@layer utilities {
+  .text-brand-orange {
+    color: #FA541C;
+  }
+  .bg-brand-orange {
+    background-color: #FA541C;
+  }
+  .border-brand-orange {
+    border-color: #FA541C;
+  }
+  .text-brand-navy {
+    color: #0B1953;
+  }
+  .bg-brand-navy {
+    background-color: #0B1953;
+  }
+}
